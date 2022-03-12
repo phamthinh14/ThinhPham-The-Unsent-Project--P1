@@ -23,7 +23,7 @@ public class Server {
         // Default servlet
         server.addServlet("", "defaultServlet", new DefaultServlet()).addMapping("/*");
         server.addServlet("", "displayServlet", new DisplayNotesServlet()).addMapping("/displayNotes");
-//        server.addServlet("", "redirectServlet", new redirectServlet()).addMapping("/redirect");
+        server.addServlet("", "addNoteServlet", new DisplayNotesServlet()).addMapping("/addNotes");
     }
 
     /**
