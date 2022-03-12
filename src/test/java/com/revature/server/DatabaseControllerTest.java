@@ -9,7 +9,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,5 +48,19 @@ class DatabaseControllerTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void insertData() {
+    }
+
+    @Test
+    void  wvfdvd() {
+        Random random = new Random();
+
+        List<Integer> randomList = IntStream.range(1, 5).map(i -> random.nextInt(314159653)).boxed().distinct().collect(Collectors.toList());
+        Collections.shuffle(randomList);
+        randomList.forEach(System.out::println);
+
     }
 }
