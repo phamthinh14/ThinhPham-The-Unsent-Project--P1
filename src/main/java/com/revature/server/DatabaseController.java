@@ -56,16 +56,21 @@ public class DatabaseController {
      */
     public void InsertData(Notes note) {
 //        select SENDER_ID, count(SENDER_ID) from SENDERS group by SENDER_ID having count(SENDER_ID) > 1;
+        int randId = GenerateId();
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     *
      * @return
      */
-    public int GenerateId(){
+    public int GenerateId() {
         Random random = new Random();
-        List<Integer> randomList;
-        randomList = IntStream.range(1, 10).map(i -> random.nextInt(1000)).boxed().distinct().toList();
+        List<Integer> randomList = IntStream.range(1, 10).map(i -> random.nextInt(1000)).boxed().distinct().toList();
         Collections.shuffle(randomList);
         System.out.println(randomList.get(0));
         return randomList.get(0);

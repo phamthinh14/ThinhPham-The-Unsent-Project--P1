@@ -1,5 +1,6 @@
 package com.revature.server;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.domain.Notes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,17 +51,24 @@ class DatabaseControllerTest {
         }
     }
 
-    @Test
-    void insertData() {
-    }
+//    @Test
+//    void insertData() {
+//        int randId = generateId();
+//        ObjectMapper mapper = new ObjectMapper();
+//        Artist newArtist = mapper.readValue(req.getInputStream(), Artist.class);
+//        try {
+//            Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    @Test
-    void  wvfdvd() {
+    int generateId() {
         Random random = new Random();
-
-        List<Integer> randomList = IntStream.range(1, 5).map(i -> random.nextInt(314159653)).boxed().distinct().collect(Collectors.toList());
+        List<Integer> randomList = IntStream.range(1, 10).map(i -> random.nextInt(1000)).boxed().distinct().toList();
         Collections.shuffle(randomList);
-        randomList.forEach(System.out::println);
-
+        System.out.println(randomList.get(0));
+        return randomList.get(0);
     }
 }

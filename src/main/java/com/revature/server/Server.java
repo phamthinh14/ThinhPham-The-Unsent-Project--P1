@@ -1,6 +1,7 @@
 package com.revature.server;
 
 import com.revature.servlet.DefaultServlet;
+import com.revature.servlet.DisplayNotesServlet;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
@@ -21,7 +22,7 @@ public class Server {
         new DatabaseController().BuildDatabase();
         // Default servlet
         server.addServlet("", "defaultServlet", new DefaultServlet()).addMapping("/*");
-//        server.addServlet("", "artistServlet", new artistServlet()).addMapping("/artists");
+        server.addServlet("", "displayServlet", new DisplayNotesServlet()).addMapping("/displayNotes");
 //        server.addServlet("", "redirectServlet", new redirectServlet()).addMapping("/redirect");
     }
 
