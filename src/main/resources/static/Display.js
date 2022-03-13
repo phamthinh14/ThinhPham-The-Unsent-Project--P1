@@ -17,8 +17,8 @@ typewriter.typeString('<strong>THE UNSENT PROJECT</strong>')
     .pauseFor(2500)
     .deleteAll()
     .start();
-//    fetch("https://data.kcmo.org/resource/frqd-pm5w")
-//        .then(response => response.json())
-//        .then(data => {
-//          data.forEach(item => console.log(item));
-//        });
+
+function enableBtt() {
+    let url = "http://localhost:8080/AddNote.html";
+    location.href = url;
+}

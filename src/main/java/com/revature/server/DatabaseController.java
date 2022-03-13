@@ -73,13 +73,28 @@ public class DatabaseController {
     }
 
     /**
+     *
+     * @param name
      * @return
      */
-//    public int GenerateId() {
-//        Random random = new Random();
-//        List<Integer> randomList = IntStream.range(1, 10).map(i -> random.nextInt(1000)).boxed().distinct().toList();
-//        Collections.shuffle(randomList);
-//        System.out.println(randomList.get(0));
-//        return randomList.get(0);
-//    }
+    public List<Notes> SearchByName(String name) {
+        List<Notes> notesList = new ArrayList<>();
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+            ResultSet rs = conn.prepareStatement("select MESSAGES.RECEIVER_ID, SENDERS.SENDER_NAME, " +
+                            "MESSAGES.RECEIVER_NAME, MESSAGES.MESSAGES from MESSAGES  inner join SENDERS on" +
+                            " SENDERS.SENDER_ID = MESSAGES.RECEIVER_ID where MESSAGES.RECEIVER_NAME = " + "'" + name + "';")
+                    .executeQuery();
+            while (rs.next()) {
+                notesList.add(
+                        new Notes(rs.getInt("receiver_id"),
+                                rs.getString("sender_name"),
+                                rs.getString("receiver_name"),
+                                rs.getString("messages")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return notesList;
+    }
 }
