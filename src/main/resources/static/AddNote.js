@@ -25,6 +25,7 @@ function submitFunction() {
     "messages": document.querySelector("#messages").value
   }
   console.log(note);
+
   fetch("/addNotes", {
     method: "post",
     headers: {
@@ -38,5 +39,10 @@ function submitFunction() {
     }
     console.log(result.text());
   }).catch(error => console.log(error));
+}
+
+function enableBtt() {
+  let url = "http://localhost:8080/Display.html";
+  location.href = url;
 }
 

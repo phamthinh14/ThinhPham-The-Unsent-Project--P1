@@ -7,6 +7,16 @@ fetch("/displayNotes")
         });
     });
 
+let app = document.querySelector("#animatedLogo");
+
+let typewriter = new Typewriter(app, {
+    loop: true
+});
+
+typewriter.typeString('<strong>THE UNSENT PROJECT</strong>')
+    .pauseFor(2500)
+    .deleteAll()
+    .start();
 //    fetch("https://data.kcmo.org/resource/frqd-pm5w")
 //        .then(response => response.json())
 //        .then(data => {

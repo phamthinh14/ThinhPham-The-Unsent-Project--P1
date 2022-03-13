@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Submit your notes</title>
     <link rel="stylesheet" href="AddNote.css">
 </head>
+
 <body>
-<div class="formDiv" id="formDiv">
-    <form action="/addNotes" method="post">
-        <label for="senderName">From:</label><br>
-        <input type="text" id="senderName" name="senderName"><br>
-        <label for="receiverName">Recipient:</label><br>
-        <input type="text" id="receiverName" name="receiverName"><br><br>
-        <label for="messages">Your Message:</label><br>
-        <textarea id="messages" name="messages" rows="4" cols="50"></textarea><br><br>
-        <input type="button" onclick="submitFunction()" value="Submit">
-    </form>
-</div>
-<script src="AddNote.js"></script>
+    <div class="formDiv" id="formDiv">
+        <form action="/addNotes" method="post">
+            <label for="senderName">From:</label><br>
+            <input type="text" id="senderName" name="senderName"><br>
+            <label for="receiverName">Recipient:</label><br>
+            <input type="text" id="receiverName" name="receiverName"><br><br>
+            <label for="messages">Your Message:</label><br>
+            <textarea id="messages" name="messages" rows="4" cols="50"></textarea><br><br>
+            <input type="button" onclick="submitFunction()" value="Submit">
+        </form>
+    </div>
+    <button id="button" onclick="enableBtt()">Home Page</button>
+    <script src="AddNote.js"></script>
 </body>
+
 </html>

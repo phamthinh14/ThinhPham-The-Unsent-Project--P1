@@ -51,8 +51,9 @@ public class DatabaseController {
     /**
      *
      */
-    public void InsertData(Notes note) {
+    public boolean InsertData(Notes note) {
 //        select SENDER_ID, count(SENDER_ID) from SENDERS group by SENDER_ID having count(SENDER_ID) > 1;
+        boolean isInserted = true;
         try {
             Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
             PreparedStatement statementSender = conn.prepareStatement("insert into senders values (?, ?)");
@@ -66,7 +67,9 @@ public class DatabaseController {
             statementMessages.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+            isInserted = false;
         }
+        return isInserted;
     }
 
     /**

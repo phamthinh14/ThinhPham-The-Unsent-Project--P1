@@ -13,9 +13,15 @@ import java.io.IOException;
 public class AddNoteServlet extends HttpServlet {
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         Notes note = mapper.readValue(req.getInputStream(), Notes.class);
         new DatabaseController().InsertData(note);
+//        resp.sendRedirect("Display.html");
     }
 }
