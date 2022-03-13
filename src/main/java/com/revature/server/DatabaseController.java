@@ -2,10 +2,7 @@ package com.revature.server;
 
 import com.revature.domain.Notes;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -56,10 +53,17 @@ public class DatabaseController {
      */
     public void InsertData(Notes note) {
 //        select SENDER_ID, count(SENDER_ID) from SENDERS group by SENDER_ID having count(SENDER_ID) > 1;
-        int randId = GenerateId();
         try {
             Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-
+            PreparedStatement statementSender = conn.prepareStatement("insert into senders values (?, ?)");
+            statementSender.setInt(1, note.getId());
+            statementSender.setString(2, note.getSenderName());
+            statementSender.executeUpdate();
+            PreparedStatement statementMessages = conn.prepareStatement("insert into messages values (?, ?, ?)");
+            statementMessages.setInt(1, note.getId());
+            statementMessages.setString(2, note.getReceiverName());
+            statementMessages.setString(3, note.getMessages());
+            statementMessages.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -68,11 +72,11 @@ public class DatabaseController {
     /**
      * @return
      */
-    public int GenerateId() {
-        Random random = new Random();
-        List<Integer> randomList = IntStream.range(1, 10).map(i -> random.nextInt(1000)).boxed().distinct().toList();
-        Collections.shuffle(randomList);
-        System.out.println(randomList.get(0));
-        return randomList.get(0);
-    }
+//    public int GenerateId() {
+//        Random random = new Random();
+//        List<Integer> randomList = IntStream.range(1, 10).map(i -> random.nextInt(1000)).boxed().distinct().toList();
+//        Collections.shuffle(randomList);
+//        System.out.println(randomList.get(0));
+//        return randomList.get(0);
+//    }
 }
