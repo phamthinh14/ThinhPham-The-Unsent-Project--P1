@@ -2,6 +2,7 @@ package com.revature.server;
 
 import com.revature.servlet.AddNoteServlet;
 import com.revature.servlet.DefaultServlet;
+import com.revature.servlet.Display1NoteServlet;
 import com.revature.servlet.DisplayNotesServlet;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
@@ -25,6 +26,7 @@ public class Server {
         server.addServlet("", "defaultServlet", new DefaultServlet()).addMapping("/*");
         server.addServlet("", "displayServlet", new DisplayNotesServlet()).addMapping("/displayNotes");
         server.addServlet("", "addNoteServlet", new AddNoteServlet()).addMapping("/addNotes");
+        server.addServlet("", "displayOneNoteServlet", new Display1NoteServlet()).addMapping("/displayOneNote");
     }
 
     /**

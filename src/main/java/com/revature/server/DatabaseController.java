@@ -73,7 +73,6 @@ public class DatabaseController {
     }
 
     /**
-     *
      * @param name
      * @return
      */
@@ -81,10 +80,18 @@ public class DatabaseController {
         List<Notes> notesList = new ArrayList<>();
         try {
             Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-            ResultSet rs = conn.prepareStatement("select MESSAGES.RECEIVER_ID, SENDERS.SENDER_NAME, " +
-                            "MESSAGES.RECEIVER_NAME, MESSAGES.MESSAGES from MESSAGES  inner join SENDERS on" +
-                            " SENDERS.SENDER_ID = MESSAGES.RECEIVER_ID where MESSAGES.RECEIVER_NAME = " + "'" + name + "';")
-                    .executeQuery();
+            ResultSet rs;
+//            if (name != null) {
+                rs = conn.prepareStatement("select MESSAGES.RECEIVER_ID, SENDERS.SENDER_NAME, " +
+                                "MESSAGES.RECEIVER_NAME, MESSAGES.MESSAGES from MESSAGES  inner join SENDERS on" +
+                                " SENDERS.SENDER_ID = MESSAGES.RECEIVER_ID where MESSAGES.RECEIVER_NAME = " + "'" + name + "';")
+                        .executeQuery();
+//            } else {
+//                rs = conn.prepareStatement("select MESSAGES.RECEIVER_ID, SENDERS.SENDER_NAME, " +
+//                        "MESSAGES.RECEIVER_NAME, MESSAGES.MESSAGES from MESSAGES  inner join" +
+//                        " SENDERS on SENDERS.SENDER_ID = MESSAGES.RECEIVER_ID;").executeQuery();
+//            }
+
             while (rs.next()) {
                 notesList.add(
                         new Notes(rs.getInt("receiver_id"),

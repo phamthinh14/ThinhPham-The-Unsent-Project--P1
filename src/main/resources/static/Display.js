@@ -22,3 +22,4 @@ function enableBtt() {
     let url = "http://localhost:8080/AddNote.html";
     location.href = url;
 }
+
