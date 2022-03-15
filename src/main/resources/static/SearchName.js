@@ -1,5 +1,7 @@
-let url = window.location.href;
-console.log(url);
+function enableBtt() {
+  let url = "http://localhost:8080/Display.html";
+  location.href = url;
+}
 
 //fetch(url)
 //    .then(response => response.json())

@@ -42,7 +42,7 @@ public class Display1NoteServlet extends HttpServlet {
                 "            <a class=\"nameLink\" id=\"nameLink\" href=\"http://localhost:8080/Display.html\">The Unsent Project</a>\n" +
                 "        </div>\n" +
                 "        <div class=\"item2\">\n" +
-                "            <button id=\"home-button\" onclick=\"enableBtt()\">Home</button>\n" +
+                "            <button id=\"home-button\" onclick=\"enableBtt()\">Home Page</button>\n" +
                 "        </div>\n" +
                 "    </div>\n" +
                 "</nav>\n" +
@@ -54,6 +54,7 @@ public class Display1NoteServlet extends HttpServlet {
         //language=HTML
         String footer = "</div>\n" +
                 "</div>\n" +
+                "<script src=\"SearchName.js\"></script>\n" +
                 "<script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\"\n" +
                 "        integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\"\n" +
                 "        crossorigin=\"anonymous\"></script>\n" +
