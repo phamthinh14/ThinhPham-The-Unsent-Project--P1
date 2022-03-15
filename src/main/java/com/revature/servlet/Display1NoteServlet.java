@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class Display1NoteServlet extends HttpServlet {
@@ -45,7 +47,13 @@ public class Display1NoteServlet extends HttpServlet {
                 "    </div>\n" +
                 "</nav>\n" +
                 "<br><br>\n" +
-                "\n" +
+                "<div class=\"displayNotes\" id=\"displayDiv\">\n" +
+                "    <div class=\"card-columns\">\n" +
+                "\n";
+
+        //language=HTML
+        String footer = "</div>\n" +
+                "</div>\n" +
                 "<script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\"\n" +
                 "        integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\"\n" +
                 "        crossorigin=\"anonymous\"></script>\n" +
@@ -58,8 +66,30 @@ public class Display1NoteServlet extends HttpServlet {
                 "</body>\n" +
                 "\n" +
                 "</html>";
-
-        resp.getWriter().println(head + notesList + body);
+        String content = "";
+        if (!notesList.isEmpty()) {
+            for (int i = 0; i < notesList.size(); i++) {
+                String encodedMess = URLEncoder.encode(notesList.get(i).getMessages(), StandardCharsets.UTF_8.toString());
+                //language=HTML
+                String temp = "<div class=\"card w-auto h-auto\">\n" +
+                        "    <div class=\"flip-card\">\n" +
+                        "        <div class=\"flip-card-inner\">\n" +
+                        "            <div class=\"flip-card-front\">\n" +
+                        "                <img src=\"https://api.qrserver.com/v1/create-qr-code/?data=" + encodedMess +
+                        "&size=200x200\" alt=\"Avatar\" style=\"width:200px;height:200px;\" />\n" +
+                        "            </div>\n" +
+                        "            <div class=\"flip-card-back\">\n" +
+                        "                <h1>To " + notesList.get(i).getReceiverName() + "</h1>\n" +
+                        "                <p>" + notesList.get(i).getMessages() + "</p>\n" +
+                        "                <p>From " + notesList.get(i).getSenderName() + "</p>\n" +
+                        "            </div>\n" +
+                        "        </div>\n" +
+                        "    </div>\n" +
+                        "</div>";
+                content += temp;
+            }
+        }
+        resp.getWriter().println(head + body + content + footer);
 //        ObjectMapper mapper = new ObjectMapper();
 //        String results = mapper.writeValueAsString(notesList);
 //        resp.setContentType("application/json");
