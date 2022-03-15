@@ -36,6 +36,8 @@ function submitFunction() {
       throw new Error("Bad Server Response");
     }
     console.log(result.text());
+    let url = "http://localhost:8080/Display.html";
+    location.href = url;
   }).catch(error => console.log(error));
 }
 

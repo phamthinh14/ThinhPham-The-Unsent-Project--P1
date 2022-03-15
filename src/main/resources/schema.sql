@@ -13,10 +13,12 @@ create table messages(receiver_id integer not null,
 
 insert into senders(sender_id, sender_name) values(41, 'Ethan');
 insert into senders(sender_id, sender_name) values(28, 'Nahte' );
+insert into senders(sender_id, sender_name) values(3, 'Nathan' );
 insert into senders(sender_id, sender_name) values(14, 'Thanks' );
 insert into senders(sender_id, sender_name) values(7, 'Onlin Odin');
 
 insert into messages(receiver_id, receiver_name, messages) values(41, 'Thark Low', 'I got option');
 insert into messages(receiver_id, receiver_name, messages) values(28, 'Mr.Show', 'Aye stop showing off');
+insert into messages(receiver_id, receiver_name, messages) values(3, 'Mr.Show', 'This is another for Show');
 insert into messages(receiver_id, receiver_name, messages) values(14, 'Nwahs', 'I have been dealing with some wack');
 insert into messages(receiver_id, receiver_name, messages) values(7, 'Shawn', 'My name is really Franco Info');
