@@ -15,8 +15,6 @@ const shuffleArray = (arr) => arr.sort(() => 0.5 - Math.random());
 let myString = "my name is\n yes myString";
 //console.log(myString);
 
-const encoded = encodeURI(myString);
-//console.log(encoded);
 function submitFunction() {
   let note = {
     "id": arr[0],

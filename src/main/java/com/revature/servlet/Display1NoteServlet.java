@@ -20,14 +20,18 @@ public class Display1NoteServlet extends HttpServlet {
         String name = req.getParameter("searchName");
         List<Notes> notesList = new DatabaseController().SearchByName(name);
         notesList.forEach(System.out::println);
+//        resp.setContentType("html");
         resp.getWriter().println(notesList.get(0));
         ObjectMapper mapper = new ObjectMapper();
         String results = mapper.writeValueAsString(notesList);
         resp.setContentType("application/json");
         resp.getWriter().println(results);
-//        RequestDispatcher view = req.getRequestDispatcher("static/main.html");
+//        RequestDispatcher view = req.getRequestDispatcher("static/SearchName.html");
 //        // don't add your web-app name to the path
 //
 //        view.forward(req, resp);
     }
+
+
+
 }

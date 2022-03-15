@@ -1,9 +1,11 @@
+let url = window.location.href;
+console.log(url);
 
-fetch("/displayOneNote")
-    .then(response => response.json())
-    .then(notes => {
-        console.log(notes);
-        notes.forEach(note => {
-            console.log(note.messages);
-        });
-    });
+//fetch(url)
+//    .then(response => response.json())
+//    .then(notes => {
+//        console.log(notes);
+//        notes.forEach(note => {
+//            console.log(note.messages);
+//        });
+//    });

@@ -4,6 +4,27 @@ fetch("/displayNotes")
         console.log(notes);
         notes.forEach(note => {
             console.log(note.messages);
+
+            const encoded = encodeURI(note.messages);
+            //console.log(encoded);
+            let cardDeck = document.querySelector(".card-columns");
+            cardDeck.insertAdjacentHTML("beforeend",
+                `<div class="card w-auto h-auto">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=${encoded}&size=200x200" alt="Avatar" style="width:200px;height:200px;" />
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>To ${note.receiverName}</h1>
+                            <p>${note.messages}</p>
+                            <p>From ${note.senderName}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            );
+
         });
     });
 
@@ -22,4 +43,3 @@ function enableBtt() {
     let url = "http://localhost:8080/AddNote.html";
     location.href = url;
 }
-
