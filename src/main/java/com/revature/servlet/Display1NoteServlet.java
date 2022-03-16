@@ -30,7 +30,7 @@ public class Display1NoteServlet extends HttpServlet {
                 "<head>\n" +
                 "    <meta charset=\"UTF-8\">\n" +
                 "    <title>Unsent Project</title>\n" +
-                "    <link rel=\"stylesheet\" href=\"Display.css\">\n" +
+                "    <link rel=\"stylesheet\" href=\"SearchName.css\">\n" +
                 "    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css\"\n" +
                 "          integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">\n" +
                 "</head>";
@@ -43,6 +43,9 @@ public class Display1NoteServlet extends HttpServlet {
                 "        </div>\n" +
                 "        <div class=\"item2\">\n" +
                 "            <button id=\"home-button\" onclick=\"enableBtt()\">Home Page</button>\n" +
+                "        </div>\n" +
+                "        <div class=\"item3\">\n" +
+                "            <button id=\"search-button\" onclick=\"searchBtt()\">Search</button>\n" +
                 "        </div>\n" +
                 "    </div>\n" +
                 "</nav>\n" +

@@ -3,6 +3,11 @@ function enableBtt() {
   location.href = url;
 }
 
+function searchBtt(){
+  let url = "http://localhost:8080/SearchName.html";
+  location.href = url;
+}
+
 //fetch(url)
 //    .then(response => response.json())
 //    .then(notes => {
