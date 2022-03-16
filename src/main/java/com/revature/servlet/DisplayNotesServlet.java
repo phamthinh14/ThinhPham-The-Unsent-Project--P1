@@ -13,6 +13,13 @@ import java.util.List;
 
 public class DisplayNotesServlet extends HttpServlet {
 
+    /**
+     * This is the landing page for the app. It will display all the notes
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DatabaseController controller = new DatabaseController();

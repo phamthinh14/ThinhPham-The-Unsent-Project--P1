@@ -19,6 +19,6 @@ insert into senders(sender_id, sender_name) values(7, 'Onlin Odin');
 
 insert into messages(receiver_id, receiver_name, messages) values(41, 'Thark Low', 'I got option');
 insert into messages(receiver_id, receiver_name, messages) values(28, 'Mr.Show', 'Aye stop showing off');
-insert into messages(receiver_id, receiver_name, messages) values(3, 'Mr.Show', 'This is another for Show');
+insert into messages(receiver_id, receiver_name, messages) values(3, 'Mr.Show', 'I hoped you enjoyed your chocolate for valentines day');
 insert into messages(receiver_id, receiver_name, messages) values(14, 'Nwahs', 'I have been dealing with some wack');
-insert into messages(receiver_id, receiver_name, messages) values(7, 'Shawn', 'My name is really Franco Info');
+insert into messages(receiver_id, receiver_name, messages) values(7, 'Shawn', 'Will you remember me after 10 years???');

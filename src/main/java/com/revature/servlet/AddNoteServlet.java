@@ -17,6 +17,13 @@ public class AddNoteServlet extends HttpServlet {
 
     }
 
+    /**
+     * This will receive the Json object from AddNotes.js
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();

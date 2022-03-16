@@ -6,19 +6,22 @@ import com.revature.servlet.Display1NoteServlet;
 import com.revature.servlet.DisplayNotesServlet;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
+ * Server
  */
 public class Server {
+    Logger logger = LoggerFactory.getLogger(Server.class);
     Tomcat server;
 
     /**
-     *
+     * Constructor with 4 servlets
      */
     public Server() {
         server = new Tomcat();

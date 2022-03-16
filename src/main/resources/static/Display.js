@@ -5,12 +5,11 @@ fetch("/displayNotes")
         notes.forEach(note => {
             console.log(note.messages);
 
-            const encoded = encodeURI(note.messages);
-            //console.log(encoded);
+            const encoded = encodeURI(`To: ${note.receiverName} \n Messages: ${note.messages} \n From: ${note.senderName}`);
             let cardDeck = document.querySelector(".card-columns");
             cardDeck.insertAdjacentHTML("beforeend",
                 `<div class="card w-auto h-auto">
-                <div class="flip-card">
+                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?data=${encoded}&size=200x200" alt="Avatar" style="width:200px;height:200px;" />
@@ -44,7 +43,7 @@ function enableBtt() {
     location.href = url;
 }
 
-function searchBtt(){
-  let url = "http://localhost:8080/SearchName.html";
-  location.href = url;
+function searchBtt() {
+    let url = "http://localhost:8080/SearchName.html";
+    location.href = url;
 }

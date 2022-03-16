@@ -17,6 +17,13 @@ import java.util.List;
 
 public class Display1NoteServlet extends HttpServlet {
 
+    /**
+     * This servlet will return a html page with searched names
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("searchName");
@@ -73,7 +80,9 @@ public class Display1NoteServlet extends HttpServlet {
         String content = "";
         if (!notesList.isEmpty()) {
             for (int i = 0; i < notesList.size(); i++) {
-                String encodedMess = URLEncoder.encode(notesList.get(i).getMessages(), StandardCharsets.UTF_8.toString());
+                String encodedMess = URLEncoder.encode("To: " + notesList.get(i).getReceiverName() + "\n Message: " +
+                                notesList.get(i).getMessages() + "\n From: " + notesList.get(i).getSenderName()
+                        , StandardCharsets.UTF_8.toString());
                 //language=HTML
                 String temp = "<div class=\"card w-auto h-auto\">\n" +
                         "    <div class=\"flip-card\">\n" +

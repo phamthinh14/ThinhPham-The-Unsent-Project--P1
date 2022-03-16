@@ -1,6 +1,8 @@
 package com.revature.server;
 
 import com.revature.domain.Notes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,19 +14,22 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class DatabaseController {
+    Logger logger = LoggerFactory.getLogger(DatabaseController.class);
 
     /**
-     *
+     * Build the database from the script schema.sql
      */
     public void BuildDatabase() {
         try {
             Connection conn = DriverManager.getConnection("jdbc:h2:~/test;INIT=runscript from 'classpath:schema.sql'", "sa", "");
+//            logger.info(String.valueOf(conn));
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     /**
+     * Select all the data with inner join of two tables
      * @return
      */
     public List<Notes> GetAllData() {
@@ -45,11 +50,12 @@ public class DatabaseController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        logger.info(String.valueOf(notesList));
         return notesList;
     }
 
     /**
-     *
+     * Insert Data to the database
      */
     public boolean InsertData(Notes note) {
 //        select SENDER_ID, count(SENDER_ID) from SENDERS group by SENDER_ID having count(SENDER_ID) > 1;
@@ -69,29 +75,23 @@ public class DatabaseController {
             e.printStackTrace();
             isInserted = false;
         }
+        logger.info(String.valueOf(isInserted));
         return isInserted;
     }
 
     /**
+     * Search and return a list of Notes
      * @param name
-     * @return
+     * @return list of Notes
      */
     public List<Notes> SearchByName(String name) {
         List<Notes> notesList = new ArrayList<>();
         try {
             Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-            ResultSet rs;
-//            if (name != null) {
-                rs = conn.prepareStatement("select MESSAGES.RECEIVER_ID, SENDERS.SENDER_NAME, " +
-                                "MESSAGES.RECEIVER_NAME, MESSAGES.MESSAGES from MESSAGES  inner join SENDERS on" +
-                                " SENDERS.SENDER_ID = MESSAGES.RECEIVER_ID where MESSAGES.RECEIVER_NAME = " + "'" + name + "';")
-                        .executeQuery();
-//            } else {
-//                rs = conn.prepareStatement("select MESSAGES.RECEIVER_ID, SENDERS.SENDER_NAME, " +
-//                        "MESSAGES.RECEIVER_NAME, MESSAGES.MESSAGES from MESSAGES  inner join" +
-//                        " SENDERS on SENDERS.SENDER_ID = MESSAGES.RECEIVER_ID;").executeQuery();
-//            }
-
+            ResultSet rs = conn.prepareStatement("select MESSAGES.RECEIVER_ID, SENDERS.SENDER_NAME, " +
+                            "MESSAGES.RECEIVER_NAME, MESSAGES.MESSAGES from MESSAGES  inner join SENDERS on" +
+                            " SENDERS.SENDER_ID = MESSAGES.RECEIVER_ID where MESSAGES.RECEIVER_NAME = " + "'" + name + "';")
+                    .executeQuery();
             while (rs.next()) {
                 notesList.add(
                         new Notes(rs.getInt("receiver_id"),
@@ -102,6 +102,7 @@ public class DatabaseController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        logger.info(String.valueOf(notesList));
         return notesList;
     }
 }
